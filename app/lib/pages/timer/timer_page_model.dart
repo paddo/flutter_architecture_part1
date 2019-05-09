@@ -20,10 +20,10 @@ class TimerPageModel {
 
   _timerElapsed(Timer timer) {
     final elapsedTime = _stopWatch.elapsed * speedMultiplier;
+    if(elapsedTime.inSeconds != duration.value.inSeconds) seconds.add((elapsedTime.inSeconds % 60) / 60.0);
+    if(elapsedTime.inMinutes != duration.value.inMinutes) minutes.add((elapsedTime.inMinutes % 60) / 60.0);
+    if(elapsedTime.inHours != duration.value.inHours) hours.add(elapsedTime.inHours / 24.0);
     duration.add(elapsedTime);
-    seconds.add((elapsedTime.inSeconds % 60) / 60.0);
-    minutes.add((elapsedTime.inMinutes % 60) / 60.0);
-    hours.add(elapsedTime.inHours / 24.0);
   }
 
   start() {
